@@ -1,0 +1,8 @@
+/data/mpc analyze --filter-asm --commit $(git rev-parse --short HEAD) --variant DEFAULT --storage /data/storage --compile-commands --dump-only .
+
+apply patch
+
+rerun mpc
+  /data/mpc analyze --filter-asm --commit $(git rev-parse --short HEAD) --variant DEFAULT --storage /data/storage --compile-commands --dump-only .
+  /data/mpc analyze --filter-asm --commit $(git rev-parse --short HEAD) --storage /data/storage --check-storage .
+

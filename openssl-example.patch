@@ -1,0 +1,24 @@
+From b96612cf82a2a8e708838a1e993794b7f6bb6279 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Felipe=20Paix=C3=A3o?= <fleap@fleap.dev>
+Date: Wed, 9 Oct 2024 14:39:55 -0300
+Subject: [PATCH] example patch
+
+---
+ include/openssl/encoder.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/openssl/encoder.h b/include/openssl/encoder.h
+index c37a6f16f2..3210c4de70 100644
+--- a/include/openssl/encoder.h
++++ b/include/openssl/encoder.h
+@@ -31,6 +31,7 @@ OSSL_ENCODER *OSSL_ENCODER_fetch(OSSL_LIB_CTX *libctx, const char *name,
+ int OSSL_ENCODER_up_ref(OSSL_ENCODER *encoder);
+ void OSSL_ENCODER_free(OSSL_ENCODER *encoder);
+ 
++static const int SIB_STUDY_SAMPLE_CHANGE = 1;
+ const OSSL_PROVIDER *OSSL_ENCODER_get0_provider(const OSSL_ENCODER *encoder);
+ const char *OSSL_ENCODER_get0_properties(const OSSL_ENCODER *encoder);
+ const char *OSSL_ENCODER_get0_name(const OSSL_ENCODER *kdf);
+-- 
+2.46.0
+

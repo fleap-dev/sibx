@@ -308,9 +308,13 @@ fn main() -> Result<ExitCode, std::io::Error> {
 
     let args = Args::parse();
 
-    match &args.command {
+    let result = match &args.command {
         Commands::Debug(args) => test_for_usage(args).map(|_| ExitCode::SUCCESS),
         Commands::Analyze(args) => analyze(args),
         Commands::Checkpoint(args) => Checkpoint::create(args).map(|_| ExitCode::SUCCESS),
-    }
+    };
+
+    result.unwrap();
+
+    Ok(ExitCode::SUCCESS)
 }
