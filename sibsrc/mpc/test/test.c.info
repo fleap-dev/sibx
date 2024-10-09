@@ -1,0 +1,15 @@
+{
+  "tu": "/home/landsberg/git/sra/multipatchcheck/plugin/../multipatchcheck/test/test.c",
+  "files": [
+    {
+      "lines": 14,
+      "path": "/home/landsberg/git/sra/multipatchcheck/plugin/../multipatchcheck/test/test.c",
+      "skips": [
+        [
+          4,
+          9
+        ]
+      ]
+    }
+  ]
+}
