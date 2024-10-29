@@ -1,0 +1,12 @@
+FROM sib:latest
+
+WORKDIR /data
+
+VOLUME /data/source
+VOLUME /data/patches
+
+COPY ./sib.sh .
+
+RUN git config --global --add safe.directory /data/source
+
+CMD ["bash", "./sib.sh"]

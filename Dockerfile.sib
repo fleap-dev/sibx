@@ -15,7 +15,7 @@ RUN apt-get update && apt-get -qq install make clang-15 libclang-15-dev llvm-15-
 ################################### Evaluation Environment ###################################
 FROM ubuntu:23.10
 
-ENV COMPILER clang-15
+ENV COMPILER=clang-15
 
 RUN apt-get update && apt-get -qq install make clang-15 libclang-15-dev llvm-15-dev bear
 
@@ -29,30 +29,12 @@ RUN apt-get update \
 && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get install -qq libx11-dev \
 && rm -rf /var/lib/apt/lists/*
 
-VOLUME /data
-WORKDIR /data
-
-COPY --from=0 mpc/target/debug/mpc .
-COPY --from=1 plugin/plugin.so .
-COPY ./repos ./repos
+COPY --from=0 mpc/target/debug/mpc /usr/local/bin/mpc
+COPY --from=1 plugin/plugin.so /usr/lib/sibplugin.so
 
 ENV CXX=clang++-15
 ENV CC=clang-15
-ENV CFLAGS=-fplugin=/data/plugin.so
-ENV CXXFLAGS=-fplugin=/data/plugin.so
+ENV CFLAGS=-fplugin=/usr/lib/sibplugin.so
+ENV CXXFLAGS=-fplugin=/usr/lib/sibplugin.so
 
-RUN mkdir /data/storage
-RUN rm -rf /data/repos/openssl/.git
-RUN git config --global user.email "test@example.com"
-RUN git config --global user.name "test@example.com"
-
-RUN cd repos/openssl && git init
-RUN cd repos/openssl && git add .
-RUN cd repos/openssl && git commit -m "first"
-RUN cd repos/openssl && ./Configure
-RUN cd repos/openssl && make -j14
-RUN cd repos/openssl && bear -- make
-
-COPY openssl-example.patch .
-
-CMD bash
+CMD ["bash"]
