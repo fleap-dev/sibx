@@ -1,0 +1,15 @@
+diff --git a/src/main.c b/src/main.c
+index ff2a408d77..c59f33b8b4 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -95,6 +95,10 @@ static int (*const sqlite3BuiltinExtensions[])(sqlite3*) = {
+ const char sqlite3_version[] = SQLITE_VERSION;
+ #endif
+ 
++#ifdef SIBX_THIS_SHOULD_NOT_BE_ENABLED
++static const int __SIBX_SHOULD_NOT_AFFECT__ = 3;
++#endif
++
+ /* IMPLEMENTATION-OF: R-53536-42575 The sqlite3_libversion() function returns
+ ** a pointer to the to the sqlite3_version[] string constant.
+ */

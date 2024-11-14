@@ -1,0 +1,15 @@
+diff --git a/include/openssl/encoder.h b/include/openssl/encoder.h
+index c37a6f1..15b9ed9 100644
+--- a/include/openssl/encoder.h
++++ b/include/openssl/encoder.h
+@@ -37,6 +37,10 @@ const char *OSSL_ENCODER_get0_name(const OSSL_ENCODER *kdf);
+ const char *OSSL_ENCODER_get0_description(const OSSL_ENCODER *kdf);
+ int OSSL_ENCODER_is_a(const OSSL_ENCODER *encoder, const char *name);
+ 
++#ifdef SIB_STUDY_THIS_SHOULD_NOT_BE_INCLUDED
++static const int __SIBX_TEST = 1;
++#endif
++
+ void OSSL_ENCODER_do_all_provided(OSSL_LIB_CTX *libctx,
+                                   void (*fn)(OSSL_ENCODER *encoder, void *arg),
+                                   void *arg);
