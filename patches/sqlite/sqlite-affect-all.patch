@@ -1,0 +1,12 @@
+diff --git a/src/sqlite.h.in b/src/sqlite.h.in
+index b84938b45c..b1242b9da5 100644
+--- a/src/sqlite.h.in
++++ b/src/sqlite.h.in
+@@ -41,6 +41,7 @@
+ extern "C" {
+ #endif
+ 
++static const int __SIBX_THIS_SHOULD_AFFECT_ALL_VARIANTS = 1;
+ 
+ /*
+ ** Facilitate override of interface linkage and calling conventions.
