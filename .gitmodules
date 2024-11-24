@@ -1,3 +1,0 @@
-[submodule "repos/openssl"]
-	path = repos/openssl
-	url = git@github.com:openssl/openssl.git
