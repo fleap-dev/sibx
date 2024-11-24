@@ -26,8 +26,13 @@ Firstly, you should set these 3 volumes inside the container:
 After setting up these volumes, you can run the container.
 Result will be sent to stdout.
 
-Example usage:
-```
+Example usage (sqlite):
+```sh
 docker run -it --rm -v /dev/shm/sqlite:/data/source:ro -v ./repos/sqlite/build.sh:/data/build.sh:ro -v ./patches/sqlite/sqlite-affect-all.patch:/data/patches/sqlite.patch:ro sibx:latest
+```
+
+Another example (openssl):
+```sh
+docker run -it --rm -v /dev/shm/openssl:/data/source:ro -v ./repos/openssl/build.sh:/data/build.sh:ro -v ./patches/openssl/openssl-not-bother.patch:/data/patches/openssl.patch:ro sibx:latest bash
 ```
 
