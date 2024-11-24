@@ -6,14 +6,14 @@ COPY sibsrc/mpc mpc/
 RUN cd mpc && cargo build
 
 ################################### Build Clang Plugin ###################################
-FROM ubuntu:23.10
+FROM ubuntu:24.04
 
 COPY sibsrc/plugin plugin/
 
 RUN apt-get update && apt-get -qq install make clang-15 libclang-15-dev llvm-15-dev && CXX=clang++-15 make -C plugin -j $(nproc) plugin.so
 
 ################################### Evaluation Environment ###################################
-FROM ubuntu:23.10
+FROM ubuntu:24.04
 
 ENV COMPILER=clang-15
 
