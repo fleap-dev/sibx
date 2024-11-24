@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-PATCH_DIR="./patches"
-RO_SOURCE_DIR="./source"
-SOURCE_DIR="./software"
+PATCH_DIR=$(realpath "./patches")
+RO_SOURCE_DIR=$(realpath "./source")
+SOURCE_DIR=$(realpath "./software")
+BUILD_SCRIPT=$(realpath "./build.sh")
 
 cp -r $RO_SOURCE_DIR $SOURCE_DIR
 
 # Step 1: build the project on the current state, before patch.
 # This is a script that builds the project. $CFLAGS and $CXXFLAGS are configured to use the clang plugin.
 echo "[STEP 1] Building project..."
-(cd $SOURCE_DIR && ./build.sh)
+(cd $SOURCE_DIR && $BUILD_SCRIPT)
 
 # Step 2: use mpc to create the current LRDB
 echo "[STEP 2] Analyzing project..."
