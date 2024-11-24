@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 PATCH_DIR="./patches"
-SOURCE_DIR="./source"
+RO_SOURCE_DIR="./source"
+SOURCE_DIR="./software"
+
+cp -r $RO_SOURCE_DIR $SOURCE_DIR
 
 # Step 1: build the project on the current state, before patch.
 # This is a script that builds the project. $CFLAGS and $CXXFLAGS are configured to use the clang plugin.
