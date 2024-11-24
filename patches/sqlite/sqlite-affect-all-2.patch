@@ -1,0 +1,13 @@
+diff --git a/src/shell.c.in b/src/shell.c.in
+index b4d7fc287f..c12bd2c048 100644
+--- a/src/shell.c.in
++++ b/src/shell.c.in
+@@ -12,6 +12,8 @@
+ ** This file contains code to implement the "sqlite" command line
+ ** utility for accessing SQLite databases.
+ */
++static const int THIS_SHOULD_AFFECT_THIS_VARIANT = 1;
++
+ #if (defined(_WIN32) || defined(WIN32)) && !defined(_CRT_SECURE_NO_WARNINGS)
+ /* This needs to come before any includes for MSVC compiler */
+ #define _CRT_SECURE_NO_WARNINGS
