@@ -1,14 +1,14 @@
 ################################### Build Rust Tool ###################################
 FROM rust:1.78.0@sha256:5907e96b0293eb53bcc8f09b4883d71449808af289862950ede9a0e3cca44ff5
 
-COPY sibsrc/mpc mpc/
+COPY original-sib-source/mpc mpc/
 
 RUN cd mpc && cargo build
 
 ################################### Build Clang Plugin ###################################
 FROM ubuntu:24.04
 
-COPY sibsrc/plugin plugin/
+COPY original-sib-source/plugin plugin/
 
 RUN apt-get update && apt-get -qq install make clang-15 libclang-15-dev llvm-15-dev && CXX=clang++-15 make -C plugin -j $(nproc) plugin.so
 
